@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/datasave/" method="post">
+    name:<input type="text" id="username"><br>
+    password:<input type="password" id="password">
+    <button type="submit">submit</button>
+</form>
+<scrip>
+    $(function() {
+	$('#upload').click(function() {
+		var json_obj = {
+				username: $('#username').val(),
+				password: $('#password').val(),
+				datas: [
+				        {
+					        game_id: 001,
+					        level: 30
+				        },
+				        {
+					        game_id: 002,
+					        level: 40
+				        }
+					   ]
+				};    //JSON对象
+
+		var json_str = JSON.stringify(json_obj);    //将JSON对象转变成JSON格式的字符串
+	    $.post("/datasave", json_str, callback, "json");
+	})
+
+	
+})
+</scrip>
+</body>
+</html>
